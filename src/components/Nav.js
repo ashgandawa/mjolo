@@ -1,6 +1,18 @@
-const Nav = () => {
+import whiteLogo from '../img/logo-white.png';
+import colorLogo from '../img/logo.png'
+
+const Nav = ({minimal, authToken}) => {
+
     return (
-        <div>Nav</div>
+        <nav>
+
+            <div className="logo-container">
+                <img className="logo" src ={minimal ? colorLogo : whiteLogo}/>
+            </div>
+
+            {!authToken && <button className='nav-button'>Log In</button>}
+            <button className='nav-button'>Log In</button>
+        </nav>
     );
 }
 
