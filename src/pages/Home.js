@@ -1,14 +1,25 @@
 import Nav from '../components/Nav'
+import {useState} from 'react';
 
 const Home = () => {
 
+    const [showModal, setShowModal] = useState(false)
+
     const authToken = true;
+
     const handleClick = () => {
-        console.log('clicked');
+        if (authToken) {
+            removeCookie('UserId', cookies.UserId)
+            removeCookie('AuthToken', cookies.AuthToken)
+            window.location.reload()
+            return
+        }
+        setShowModal(false)
+        setIsSignUp(true)
     }
 
     return (
-        <div>
+        <div className='overlay'>
             <Nav minimal={false} authToken={authToken}/>
 
             <div className="home">
